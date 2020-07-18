@@ -19,6 +19,10 @@ const store = createStore((state = { count: 0 }, action) => {
   }
 });
 
+store.subscribe(() => {
+  console.log(store.getState());
+})
+
 store.dispatch({
   type: 'INCREMENT'
 });
@@ -30,6 +34,3 @@ store.dispatch({
 store.dispatch({
   type: 'RESET'
 });
-
-
-store.getState();
