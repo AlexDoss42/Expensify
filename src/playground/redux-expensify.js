@@ -1,7 +1,30 @@
 import { createStore, combineReducers } from 'redux';
+import uuid from 'uuid';
+
+const addExpense = (
+  {
+    description = '',
+    note = '',
+    amount = 0,
+    createdAt = 0
+  } = {}
+) => ({
+  expense: {
+    id: uuid(),
+    description,
+    note, 
+    amount,
+    createdAt
+  }
+});
 
 const expenseReducerDefaultState = []
-const filtersReducerDefaultState = { text: '', sortBy: '', startDate: undefined, endDate: undefined }
+const filtersReducerDefaultState = { 
+  text: '',
+  sortBy: '',
+  startDate: undefined,
+  endDate: undefined
+};
 
 const expenseReducer = (state = expenseReducerDefaultState, action) => {
   switch(action.type) {
@@ -22,7 +45,7 @@ const store = createStore(
     expenses: expenseReducer,
     fitlers: filtersReducer
   })
-  );
+);
 
 const demoState = {
   expenses: [{
