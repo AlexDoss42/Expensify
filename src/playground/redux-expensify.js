@@ -9,6 +9,7 @@ const addExpense = (
     createdAt = 0
   } = {}
 ) => ({
+  type: 'ADD_EXPENSE',
   expense: {
     id: uuid(),
     description,
@@ -16,6 +17,11 @@ const addExpense = (
     amount,
     createdAt
   }
+});
+
+const removeExpense = ({ id } = {}) => ({
+  type: 'REMOVE_EXPENSE',
+  id
 });
 
 const expenseReducerDefaultState = []
@@ -29,7 +35,12 @@ const filtersReducerDefaultState = {
 const expenseReducer = (state = expenseReducerDefaultState, action) => {
   switch(action.type) {
     case 'ADD_EXPENSE':
-      return state.concat(action.expense);
+      return [
+        ...state,
+        action.expense
+      ];
+    case 'REMOVE_EXPENSE':
+      return state.filter(({ id }) => id !== action.id);
     default: 
     return state;
   }
@@ -53,7 +64,10 @@ store.subscribe(() => {
   console.log(store.getState());
 });
 
-store.dispatch(addExpense({ description: 'rent', amount: 100 }));
+const expenseOne = store.dispatch(addExpense({ description: 'rent', amount: 100 }));
+const expenseTwo = store.dispatch(addExpense({ description: 'electricity', amount: 500 }));
+
+store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
 const demoState = {
   expenses: [{
