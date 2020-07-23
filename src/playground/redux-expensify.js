@@ -28,6 +28,8 @@ const filtersReducerDefaultState = {
 
 const expenseReducer = (state = expenseReducerDefaultState, action) => {
   switch(action.type) {
+    case 'ADD_EXPENSE':
+      return state.concat(action.expense);
     default: 
     return state;
   }
@@ -46,6 +48,12 @@ const store = createStore(
     fitlers: filtersReducer
   })
 );
+
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
+store.dispatch(addExpense({ description: 'rent', amount: 100 }));
 
 const demoState = {
   expenses: [{
