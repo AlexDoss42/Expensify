@@ -24,6 +24,12 @@ const removeExpense = ({ id } = {}) => ({
   id
 });
 
+const editExpense = ( id, updates) => ({
+  type: 'EDIT_EXPENSE',
+  id,
+  updates
+});
+
 const expenseReducerDefaultState = []
 const filtersReducerDefaultState = { 
   text: '',
@@ -41,6 +47,17 @@ const expenseReducer = (state = expenseReducerDefaultState, action) => {
       ];
     case 'REMOVE_EXPENSE':
       return state.filter(({ id }) => id !== action.id);
+    case 'EDIT_EXPENSE':
+      return state.map((expense) => {
+        if(expense.id === action.id) {
+          return {
+            ...expense,
+            ...action.updates
+          }
+        } else {
+          return expense;
+        };
+      });
     default: 
     return state;
   }
@@ -69,6 +86,8 @@ const expenseTwo = store.dispatch(addExpense({ description: 'electricity', amoun
 
 store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
+store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 }));
+
 const demoState = {
   expenses: [{
     id: 'poijsdfas',
@@ -91,5 +110,7 @@ const user = {
 };
 
 console.log({
-  ...user
+  ...user,
+  location: 'Jackson, WY',
+  age: 26
 });
