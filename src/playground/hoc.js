@@ -11,12 +11,12 @@ const Info = () => {
 const withAdminWarning = (WrappedComponent) => {
   return (props) => (
     <div>
-      <p>This is private info please don't share!</p>
-      <WrappedComponent />
+      {props.isAdmin && <p>This is private info please don't share!</p>}
+      <WrappedComponent {...props} />
     </div>
   )
 };
 
 const AdminInfo = withAdminWarning(Info);
 
-ReactDOM.render(<Info info="There are the details" />, document.getElementById('app'));
+ReactDOM.render(<AdminInfo isAdmin={false} info="There are the details" />, document.getElementById('app'));
