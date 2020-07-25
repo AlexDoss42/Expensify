@@ -39,6 +39,16 @@ const sortByAmount = () => ({
   type: 'SORT_BY_AMOUNT'
 });
 
+const setStartDate = (startDate = undefined) => ({
+  type: 'SET_START_DATE',
+  startDate
+});
+
+const setEndDate = (endDate = undefined) => ({
+  type: 'SET_END_DATE',
+  endDate
+});
+
 const sortByDate = () => ({
   type: 'SORT_BY_DATE'
 });
@@ -93,6 +103,16 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
           ...state,
           sortBy: 'Date'
       }
+      case 'SET_START_DATE':
+        return {
+          ...state,
+          startDate: action.startDate
+      }
+      case 'SET_END_DATE':
+        return {
+          ...state,
+          startDate: action.endDate
+      }
     default: 
       return state;
   }
@@ -121,6 +141,9 @@ store.dispatch(setTextFilter());
 
 store.dispatch(sortByAmount());
 store.dispatch(sortByDate());
+
+store.dispatch(setStartDate(4));
+store.dispatch(setEndDate(10));
 
 const demoState = {
   expenses: [{
