@@ -3,7 +3,8 @@ import ExpenseForm from './ExpenseForm';
 
 const CreateExpense = () => {
   <div>
-    Create Expense Page
+    <h1>Add Expense</h1>
+    <ExpenseForm />
   </div>
 };
 
