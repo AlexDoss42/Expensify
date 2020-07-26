@@ -10,6 +10,7 @@ const ExpenseList = (props) => (
     
     {props.expenses.map((expense) => {
       return <ExpenseListItem 
+               id={expense.id}
                key={expense.id}
                amount={expense.amount}
                createdAt={expense.createdAt}
