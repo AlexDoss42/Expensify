@@ -1,9 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ExpenseForm from './ExpenseForm';
 
-const EditExpense = () => {
+const EditExpense = (props) => {
   <div>
-    Edit Expense Page
+    <ExpenseForm
+      expense ={props.expense}
+      onSubmit={() => {
+
+      }}
+    />
   </div>
 };
 
