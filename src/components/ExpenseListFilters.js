@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter, sortByAmount, sortByDate } from '../actions/filters';
+import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters';
 import { DateRangePicker } from 'react-dates';
 
 const ExpenseListFilters = (props) => {
 
   const [calendarFocused, setCalendarFocused] = useState(null);
+
+  const onDatesChange = ({ startDate, endDate }) => {
+    props.dispatch(setStartDate(startDate));
+    props.dispatch(setEndDate(endDate));
+  };
+
+  const onFocusChange = (calendarFocused) => {
+    setCalendarFocused(calendarFocused);
+  };
 
   return (
     <div>
@@ -27,7 +36,14 @@ const ExpenseListFilters = (props) => {
         <option value="Amount">Amount</option>
       </select>
       <DateRangePicker
-
+        startDate={props.filters.startDate}
+        endDate={props.filters.endDate}
+        onDatesChange={onDatesChange}
+        focusedInput={calendarFocused}
+        onFocusChange={onFocusChange}
+        showClearDates={true}
+        numberOfMonths={1}
+        isOutsideRange={() => false}
       />
     </div>
   );
