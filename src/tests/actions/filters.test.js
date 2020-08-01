@@ -32,3 +32,17 @@ test('should generate set end date action object', () => {
     endDate: moment(0)
   });
 });
+
+test('should generate sort by amount action object', () =>{
+  const action = sortByAmount();
+  expect(action).toEqual({
+    type: 'SORT_BY_AMOUNT'
+  });
+});
+
+test('should generate sort by date action object', () =>{
+  const action = sortByDate();
+  expect(action).toEqual({
+    type: 'SORT_BY_DATE'
+  });
+});
