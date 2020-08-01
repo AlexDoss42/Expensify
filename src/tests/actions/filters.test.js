@@ -1,5 +1,21 @@
 import moment from 'moment';
-import { setStartDate, setEndDate } from '../../actions/filters';
+import { setStartDate, setEndDate, setTextFilter, sortByDate, sortByAmount } from '../../actions/filters';
+
+test('should generate set text filter action object with input text', () => {
+  const action = setTextFilter('hello');
+  expect(action).toEqual({
+    type: "TEXT_FILTER",
+    text: 'hello'
+  });
+});
+
+test('should generate set text filter action object with default text', () => {
+  const action = setTextFilter();
+  expect(action).toEqual({
+    type: "TEXT_FILTER",
+    text: ''
+  });
+});
 
 test('should generate set start date action object', () => {
   const action = setStartDate(moment(0));
