@@ -5,8 +5,8 @@ import { addExpense } from '../actions/expenses';
 
 export class CreateExpense extends React.Component {
   onSubmit = (expense) => {
-    props.onSubmit(expense);
-    props.history.push('/');
+    this.props.addExpense(expense);
+    this.props.history.push('/');
   }
 
   render() {
@@ -22,7 +22,7 @@ export class CreateExpense extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (expense) => dispatch(addExpense(expense))
+  addExpense: (expense) => dispatch(addExpense(expense))
 });
 
 export default connect(undefined, mapDispatchToProps)(CreateExpense);
