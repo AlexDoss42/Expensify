@@ -19,4 +19,16 @@ beforeEach(() => {
   );
 });
 
-test('')
+test('should render EditExpense', () =>{
+  expect(wrapper).toMatchSnapshot();
+});
+
+test('should handle edit expense', () =>{
+  wrapper.find('ExpenseForm').prop('onSubmit')(expenses[2]);
+  expect(history.push).toHaveBeenLastCalledWith('/');
+  expect(editExpense).toHaveBeenLastCalledWith(expenses[2].id, expenses[2]);
+});
+
+test('should handle remove expense', () =>{
+
+});
