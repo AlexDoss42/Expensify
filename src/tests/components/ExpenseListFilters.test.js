@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ReactWrapper } from 'enzyme';
+import moment from 'moment';
+import { shallow } from 'enzyme';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters';
 import { filters, altFilters } from '../fixtures/filters';
 
@@ -64,7 +65,14 @@ test('should sort by amount', () => {
 });
 
 test('should handle date changes', () => {
-
+  const StartDate = moment(0).add(4, 'years');
+  const endDate = moment(0).add(8, 'years');
+  wrapper.find('DateRangePicker').prop('onDatesChange', {
+    StartDate,
+    endDate
+  });
+  expect(setStartDate).toHaveBeenLastCalledWith(StartDate);
+  expect(setEndDate).toHaveBeenLastCalledWith(endDate);
 });
 
 test('should handle focus change', () => {
