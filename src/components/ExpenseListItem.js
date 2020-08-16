@@ -9,5 +9,3 @@ export default ExpenseListItem = ({ amount, description, createdAt, id }) => (
     <p>{amount} - {createdAt}</p>
   </div>
 );
-
-export default ExpenseListItem;
