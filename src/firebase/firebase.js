@@ -25,3 +25,11 @@ import * as firebase from 'firebase';
       country: 'United States of America'
     }
   });
+
+  // database.ref().set('This is my data');
+
+  database.ref('age').set({
+    age: 28
+  });
+
+  database.ref('location/city').set('Dallas');
