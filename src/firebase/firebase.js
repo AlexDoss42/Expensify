@@ -43,4 +43,10 @@ import * as firebase from 'firebase';
   datatbase.ref('attributes').set({
     height: 75,
     weight: 258
+  })
+  .then(() => {
+    console.log('you added attributes obj');
+  })
+  .catch((error) => {
+    console.log(error);
   });
