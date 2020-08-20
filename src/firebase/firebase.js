@@ -14,7 +14,9 @@ import * as firebase from 'firebase';
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-  firebase.database.ref().set({
+  const database = firebase.database();
+
+  database.ref().set({
     name: 'Alex Doss',
     age: 27,
     isSingle: true,
