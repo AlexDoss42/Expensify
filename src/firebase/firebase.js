@@ -13,3 +13,7 @@ import * as firebase from 'firebase';
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+
+  firebase.database.ref().set({
+    name: 'Alex Doss'
+  });
