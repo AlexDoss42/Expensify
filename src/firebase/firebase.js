@@ -33,3 +33,8 @@ import * as firebase from 'firebase';
   });
 
   database.ref('location/city').set('Dallas');
+
+  datatbase.ref('attributes').set({
+    height: 75,
+    weight: 258
+  });
