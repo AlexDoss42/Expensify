@@ -24,6 +24,12 @@ import * as firebase from 'firebase';
       city: 'Orem',
       country: 'United States of America'
     }
+  })
+  .then(() => {
+    console.log('Data is saved');
+  })
+  .catch((error) => {
+    console.log(error);
   });
 
   // database.ref().set('This is my data');
