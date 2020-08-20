@@ -15,5 +15,11 @@ import * as firebase from 'firebase';
   firebase.analytics();
 
   firebase.database.ref().set({
-    name: 'Alex Doss'
+    name: 'Alex Doss',
+    age: 27,
+    isSingle: true,
+    location: {
+      city: 'Orem',
+      country: 'United States of America'
+    }
   });
