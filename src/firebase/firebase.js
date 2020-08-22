@@ -19,7 +19,11 @@ import * as firebase from 'firebase';
   database.ref().set({
     name: 'Alex Doss',
     age: 27,
-    isSingle: true,
+    stressLevel: 8,
+    job: {
+      title: 'Software Engineer',
+      company: 'Impartner'
+    },
     location: {
       city: 'Orem',
       country: 'United States of America'
@@ -35,8 +39,9 @@ import * as firebase from 'firebase';
   // database.ref().set('This is my data');
 
   database.ref().update({
-    age: 28,
-    name: 'Alexander Michael Doss'
+    stressLevel: 9,
+    'job/company': 'Amazon',
+    'location/city': 'Seattle'
   });
 
   database.ref('location/city').set('Dallas');
