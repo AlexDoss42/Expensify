@@ -16,9 +16,11 @@ import * as firebase from 'firebase';
 
   const database = firebase.database();
 
-  database.ref().on('value', (snapshot) => {
-    console.log(snapshot.val());
-  });
+  
+
+  // database.ref().on('value', (snapshot) => {
+  //   console.log(snapshot.val());
+  // });
 
   // database.ref()
   //   .once('value')
