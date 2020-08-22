@@ -34,8 +34,9 @@ import * as firebase from 'firebase';
 
   // database.ref().set('This is my data');
 
-  database.ref('age').set({
-    age: 28
+  database.ref().update({
+    age: 28,
+    name: 'Alexander Michael Doss'
   });
 
   database.ref('location/city').set('Dallas');
