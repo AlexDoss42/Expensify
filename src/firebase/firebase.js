@@ -50,3 +50,5 @@ import * as firebase from 'firebase';
   .catch((error) => {
     console.log(error);
   });
+
+  database.ref('isSingle').remove();
