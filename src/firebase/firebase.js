@@ -16,45 +16,55 @@ import * as firebase from 'firebase';
 
   const database = firebase.database();
 
-  database.ref().set({
-    name: 'Alex Doss',
-    age: 27,
-    stressLevel: 8,
-    job: {
-      title: 'Software Engineer',
-      company: 'Impartner'
-    },
-    location: {
-      city: 'Orem',
-      country: 'United States of America'
-    }
-  })
-  .then(() => {
-    console.log('Data is saved');
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  database.ref()
+    .once('value')
+    .then((snapshot) => {
+      const val = snapshot.val();
+      console.log(val);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  // database.ref().set({
+  //   name: 'Alex Doss',
+  //   age: 27,
+  //   stressLevel: 8,
+  //   job: {
+  //     title: 'Software Engineer',
+  //     company: 'Impartner'
+  //   },
+  //   location: {
+  //     city: 'Orem',
+  //     country: 'United States of America'
+  //   }
+  // })
+  // .then(() => {
+  //   console.log('Data is saved');
+  // })
+  // .catch((error) => {
+  //   console.log(error);
+  // });
 
   // database.ref().set('This is my data');
 
-  database.ref().update({
-    stressLevel: 9,
-    'job/company': 'Amazon',
-    'location/city': 'Seattle'
-  });
+  // database.ref().update({
+  //   stressLevel: 9,
+  //   'job/company': 'Amazon',
+  //   'location/city': 'Seattle'
+  // });
 
-  database.ref('location/city').set('Dallas');
+  // database.ref('location/city').set('Dallas');
 
-  datatbase.ref('attributes').set({
-    height: 75,
-    weight: 258
-  })
-  .then(() => {
-    console.log('you added attributes obj');
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  // datatbase.ref('attributes').set({
+  //   height: 75,
+  //   weight: 258
+  // })
+  // .then(() => {
+  //   console.log('you added attributes obj');
+  // })
+  // .catch((error) => {
+  //   console.log(error);
+  // });
 
-  database.ref('isSingle').remove();
+  // database.ref('isSingle').remove();
