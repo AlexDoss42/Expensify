@@ -16,15 +16,19 @@ import * as firebase from 'firebase';
 
   const database = firebase.database();
 
-  database.ref()
-    .once('value')
-    .then((snapshot) => {
-      const val = snapshot.val();
-      console.log(val);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  database.ref().on('value', (snapshot) => {
+
+  });
+
+  // database.ref()
+  //   .once('value')
+  //   .then((snapshot) => {
+  //     const val = snapshot.val();
+  //     console.log(val);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
 
   // database.ref().set({
   //   name: 'Alex Doss',
