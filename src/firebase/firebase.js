@@ -16,7 +16,7 @@ import * as firebase from 'firebase';
 
   const database = firebase.database();
 
-  
+  export { firebase, database as default };
 
   // database.ref().on('value', (snapshot) => {
   //   console.log(snapshot.val());
