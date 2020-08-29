@@ -6,9 +6,12 @@
   "license": "MIT",
   "scripts": {
     "serve": "live-server public/",
-    "build": "webpack",
+    "build:dev": "webpack",
+    "build:prod": "wepack -p --env production",
     "dev-server": "webpack-dev-server",
-    "test": "jest --config=jest.config.json"
+    "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
+    "start": "node server/server.js",
+    "heroku-postbuild": "npm run build:prod"
   },
   "dependencies": {
     "babel-cli": "6.24.1",
@@ -18,6 +21,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
+    "cross-env": "^5.0.5",
     "css-loader": "0.28.4",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
