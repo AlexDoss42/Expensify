@@ -75,3 +75,12 @@ test('should setup set expense action object with data', () => {
     expenses
   });
 });
+
+test('should set expenses', () => {
+  const action = {
+    type: 'SET_EXPENSES',
+    expenses: [expenses[1]]
+  };
+  const state = expensesReducer(expenses, action);
+  expect(state).toEqual([expneses[1]]);
+});
