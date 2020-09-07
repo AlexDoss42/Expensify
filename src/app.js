@@ -7,6 +7,7 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from "./firebase/firebase";
+import { startSetExpenses } from './actions/expenses';
 
 const store = configureStore();
 
@@ -16,11 +17,11 @@ jsx = (
   </Provider>
 )
 
-ReactDOM.render(jsx, document.getElementById('app'));
-
 firebase.auth().onAuthStateChanged(() => {
   if (user) {
-    console.log('log in');
+    store.dispatch(startSetExpenses()).then(() => {
+      ReactDOM.render(jsx, document.getElementById('app'));
+    });
   } else {
     history.push('/');
   }
