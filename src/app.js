@@ -10,19 +10,31 @@ import { firebase } from "./firebase/firebase";
 import { startSetExpenses } from './actions/expenses';
 
 const store = configureStore();
-
-jsx = (
+const jsx = (
   <Provider store={store}>
     <AppRouter />
   </Provider>
 )
+let hasRendered = false;
+const renderApp = () => {
+  if(!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered = true;
+  }
+};
+
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged(() => {
   if (user) {
     store.dispatch(startSetExpenses()).then(() => {
-      ReactDOM.render(jsx, document.getElementById('app'));
+      renderApp();
+      if (history.location.pathname === '/') {
+        history.push('/dashboard');
+      }
     });
   } else {
+    renderApp();
     history.push('/');
   }
 });
