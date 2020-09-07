@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import AppRouter from './routers/AppRouter';
+import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './stores/configureStore';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -22,6 +22,6 @@ firebase.auth().onAuthStateChanged(() => {
   if (user) {
     console.log('log in');
   } else {
-    console.log('log out');
+    history.push('/');
   }
 });
