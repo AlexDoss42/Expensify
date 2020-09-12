@@ -8,8 +8,6 @@ const Header = ({ startLogout }) => {
     <h1>Expensify</h1>
       <NavLink to='/dashboard' activeClassName='isActive'>Dashboard</NavLink>
       <NavLink to='/create' activeClassName='isActive'>Add Expense</NavLink>
-      <NavLink to='/edit' activeClassName='isActive'>Edit Expense</NavLink>
-      <NavLink to='/help' activeClassName='isActive'>Help</NavLink> 
       <button onClick={startLogout}>Logout</button>
   </header>
 };
