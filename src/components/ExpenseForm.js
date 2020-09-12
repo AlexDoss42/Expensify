@@ -72,6 +72,7 @@ class ExpenseForm extends React.Component {
           <input 
             type="text"
             autoFocus
+            className="text-input"
             placeholder="Description"
             value={this.state.description}
             onChange={this.onDescriptionChange}
@@ -79,6 +80,7 @@ class ExpenseForm extends React.Component {
           <input 
             type="number"
             placeholder="Amount"
+            className="text-input"
             value={this.state.amount}
             onChange={this.onAmountChange}
           />
@@ -92,6 +94,7 @@ class ExpenseForm extends React.Component {
           />
           <textarea
             placeholder="Add a note for your expense (optional)"
+            className="text-area"
             value={this.state.note}
             onChange={this.onNoteChange}
           ></textarea>
