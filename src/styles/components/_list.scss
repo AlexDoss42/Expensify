@@ -6,6 +6,13 @@
   padding: $s-size $m-size;
 }
 
+.list-body {
+  margin-bottom: $m-size;
+  @media (min-width: $desktop-breakpoint) {
+    margin-bottom: $l-size;
+  }
+}
+
 .list-item {
   border: 1px solid darken($off-white, 7%);
   border-top: none;
@@ -23,6 +30,16 @@
     flex-direction: row;
     justify-content: space-between;
     padding: $m-size;
+  }
+}
+
+.list-item--message {
+  align-items: center;
+  color: $grey;
+  justify-content: center;
+  padding: $m-size;
+  &:hover{
+    background: none;
   }
 }
 
